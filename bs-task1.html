@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Page</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Style for the gray rectangle */
+        .gray-box {
+            background-color: #f0f0f0;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Style for the navigation buttons container */
+        .nav-buttons {
+            display: flex; /* Display the buttons horizontally */
+        }
+
+        /* Style for each navigation button */
+        .nav-link {
+            color: #333;
+            margin-right: 10px;
+        }
+
+        /* Style for the login/signup links */
+        .login-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .login-link {
+            margin-right: 10px;
+        }
+
+        /* Style for the vertical dark gray box */
+        .dark-gray-box {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            width: 200px; /* Adjust the width as needed */
+            position: fixed;
+            top: 20;
+            right: 0;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <!-- Gray Rectangle -->
+        <div class="gray-box">
+            <!-- Navigation Buttons (Left) -->
+            <div class="nav-buttons">
+                <a class="nav-link" href="#">Home</a>
+                <a class="nav-link" href="#">Menu</a>
+                <a class="nav-link" href="#">About</a>
+                <a class="nav-link" href="#">Contact</a>
+            </div>
+            <!-- Sign Up and Login Links (Right) -->
+            <div class="login-links">
+                <a class="login-link" href="#">Sign Up</a>
+                <span>|</span>
+                <a class="login-link" href="#">Login</a>
+            </div>
+        </div>
+        
+        <!-- Vertical Dark Gray Box (Right) -->
+        <div class="dark-gray-box">
+            <!-- Content for the dark gray box goes here -->
+            <p>box</p>
+        </div>
+    </div>
+
+    <!-- Include Bootstrap JS (optional) -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

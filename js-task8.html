@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+            background-image: url('image6.jpeg'); /* Replace 'background.jpg' with your actual background image URL */
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: white;
+        }
+
+        #registration-form {
+            margin: 50px auto;
+            width: 500px;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="number"],
+        input[type="tel"],
+        select,
+        textarea {
+            width: 90%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .password-strength {
+            margin-top: 5px;
+            font-weight: bold;
+        }
+
+        .password-strength.poor {
+            color: red;
+        }
+
+        .password-strength.medium {
+            color: orange;
+        }
+
+        .password-strength.good {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div id="registration-form">
+        <h2>Registration Form</h2>
+        <form id="registration">
+            <div>
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" required>
+                <div class="field-strength"></div>
+            </div>
+            <div>
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" required>
+                <div class="field-strength"></div>
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+                <div class="field-strength"></div>
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" required>
+                <div class="password-strength"></div>
+            </div>
+            <div>
+                <label for="confirmPassword">Re-enter Password:</label>
+                <input type="password" id="confirmPassword" required>
+                <div class="field-strength"></div>
+            </div>
+            <div>
+                <label>Gender:</label>
+                <input type="radio" id="male" name="gender" value="male"> Male
+                <input type="radio" id="female" name="gender" value="female"> Female
+            </div>
+            <div>
+                <label for="age">Age:</label>
+                <input type="number" id="age" required>
+                <div class="field-strength"></div>
+            </div>
+            <div>
+                <label for="phoneNumber">Phone Number:</label>
+                <input type="tel" id="phoneNumber" required>
+                <div class="field-strength"></div>
+            </div>
+            <div>
+                <label for="address">Address:</label>
+                <textarea id="address" rows="3"></textarea>
+                <div class="field-strength"></div>
+            </div>
+            <div>
+                <label for="state">State:</label>
+                <input type="text" id="state" required>
+                <div class="field-strength"></div>
+            </div>
+            <div>
+                <label for="country">Country:</label>
+                <input type="text" id="country" required>
+                <div class="field-strength"></div>
+            </div>
+            <div>
+                <label for="knownLanguages">Known Languages:</label>
+                <select id="knownLanguages" multiple required>
+                    <option value="english">English</option>
+                    <option value="hindi">Hindi</option>
+                    <option value="telugu">Telugu</option>
+                    <option value="kannada">Kannada</option>
+                </select>
+                <div class="field-strength"></div>
+            </div>
+            <div>
+                <input type="checkbox" id="messageCheckbox" style="vertical-align: middle;">
+                <label for="messageCheckbox" style="display: inline-block;">hear by i declare all the given details are true</label>
+            </div>
+            <div>
+                
+                </select>
+            </div>
+            <button type="submit">Register</button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Password Strength Function
+            function checkPasswordStrength(password) {
+                if (password.length <= 2) {
+                    return 'poor';
+                } else if (password.length <= 5) {
+                    return 'medium';
+                } else {
+                    return 'good';
+                }
+            }
+
+            // Password Strength Display
+            const passwordInput = document.getElementById('password');
+            const passwordStrength = document.querySelector('.password-strength');
+
+            passwordInput.addEventListener('input', function () {
+                const password = passwordInput.value;
+                const strength = checkPasswordStrength(password);
+                passwordStrength.textContent = `Password Strength: ${strength.toUpperCase()}`;
+                passwordStrength.className = `password-strength ${strength}`;
+            });
+
+            // Field Strength Display
+            const fieldInputs = document.querySelectorAll('input[type="text"], input[type="email"], input[type="number"], input[type="tel"], select, textarea');
+
+            fieldInputs.forEach(function (fieldInput) {
+                fieldInput.addEventListener('input', function () {
+                    const value = fieldInput.value;
+                    let strength = '';
+
+                    if (value.length <= 2) {
+                        strength = 'poor';
+                    } else if (value.length <= 5) {
+                        strength = 'medium';
+                    } else {
+                        strength = 'good';
+                    }
+
+                    const fieldStrengthDiv = fieldInput.parentElement.querySelector('.field-strength');
+                    if (fieldStrengthDiv) {
+                        fieldStrengthDiv.textContent = `${strength.charAt(0).toUpperCase() + strength.slice(1)} Quality`;
+                        fieldStrengthDiv.className = `field-strength ${strength}`;
+                    }
+                });
+            });
+
+            // JavaScript code for form validation and submission can be added here
+        });
+    </script>
+</body>
+</html>
